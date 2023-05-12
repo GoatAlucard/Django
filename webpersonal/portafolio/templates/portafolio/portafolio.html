@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+
+{% block title%}portafolio{% endblock%}
+
+{% load static %}
+
+{% block background %} {% static 'core/img/wood.jpg'%} {% endblock %}
+
+{% block headers %}
+    <h1> Maderas GOD </h1>
+    <span class="subheading"> portafolio </span>
+{% endblock %}
+
+
+{% block content %}
+    {% for project in projects %}
+    <div class="row project">
+        <div class="col-lg-3 col-md-4 offset-lg-1">
+            <img class="img-fluid" src="{{project.imagen.url}}" alt="">
+    </div>
+    <div class="col-lg-7 col-md-8">
+        <h2 class="section-heading title">{{project.titulo}}</h2>
+        <p> {{project.descripcion}}</p>
+        {% if project.link %}
+        <p> <a href="{{project.link}}"> mas informacion </a></p>
+        {% endif %}
+    </div>
+</div>
+
+{% endfor %}
+{% endblock%}
